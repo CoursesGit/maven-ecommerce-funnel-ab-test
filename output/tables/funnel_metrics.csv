@@ -1,0 +1,8 @@
+step_number,funnel_stage,pageview_url,reached_sessions,step_conversion_rate,drop_off_rate
+1,Landing,/lander-1,4493,,
+2,Products,/products,2115,0.4707322501669263,0.5292677498330737
+3,Product Detail,/the-original-mr-fuzzy,1567,0.7408983451536643,0.25910165484633574
+4,Cart,/cart,683,0.4358647096362476,0.5641352903637524
+5,Shipping,/shipping,455,0.6661786237188873,0.33382137628111275
+6,Billing,/billing,361,0.7934065934065934,0.20659340659340664
+7,Purchase,/thank-you-for-your-order,158,0.4376731301939058,0.5623268698060941

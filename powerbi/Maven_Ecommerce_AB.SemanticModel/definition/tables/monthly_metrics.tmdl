@@ -1,0 +1,85 @@
+table monthly_metrics
+	lineageTag: 135a849f-ca4c-4b8d-a4a4-605239886b89
+
+	column month
+		dataType: dateTime
+		formatString: yyyy-MM
+		lineageTag: 37ccae53-26e1-4bed-8e4c-de6adcf91bb6
+		summarizeBy: none
+		sourceColumn: month
+
+		variation Variation
+			isDefault
+			relationship: f6a1e913-7b3f-488f-ac87-afe446e17bca
+			defaultHierarchy: LocalDateTable_9330174a-d9ba-4ed8-b01c-026abb2b484f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column sessions
+		dataType: int64
+		formatString: 0
+		lineageTag: beb5a278-4c4b-47eb-8fe4-3bd5e4147556
+		summarizeBy: sum
+		sourceColumn: sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column orders
+		dataType: int64
+		formatString: 0
+		lineageTag: ca4ce737-b379-4ae7-987c-d75b6c0bb02b
+		summarizeBy: sum
+		sourceColumn: orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_conversion_rate
+		dataType: double
+		lineageTag: 5f537718-b95d-4794-bf05-d737b5b3c7c5
+		summarizeBy: sum
+		sourceColumn: purchase_conversion_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revenue
+		dataType: double
+		lineageTag: 3e059dc4-a376-488a-9d89-90cb6a224951
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revenue_per_session
+		dataType: double
+		lineageTag: bfaa9b47-83fb-4991-a070-199177310998
+		summarizeBy: sum
+		sourceColumn: revenue_per_session
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column month_date = DATE(YEAR(monthly_metrics[month]), MONTH(monthly_metrics[month]), 1)
+		dataType: dateTime
+		formatString: yyyy-MM
+		lineageTag: fda023cb-a23e-4e91-9883-46af8b61e8ee
+		summarizeBy: none
+
+	partition monthly_metrics = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Administrator\Desktop\maven_ecommerce_ab\output\tables\monthly_metrics.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"month", type date}, {"sessions", Int64.Type}, {"orders", Int64.Type}, {"purchase_conversion_rate", type number}, {"revenue", type number}, {"revenue_per_session", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

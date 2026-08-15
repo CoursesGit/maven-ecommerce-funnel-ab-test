@@ -1,0 +1,221 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "monthly_metrics.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "monthly_metrics",
+			          "ConceptualProperty": "month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Month": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "funnel_metrics.step_transition_cn": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "funnel_metrics",
+			          "ConceptualProperty": "step_transition_cn"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "step_transition_cn": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "funnel_metrics.funnel_stage_cn": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "funnel_metrics",
+			          "ConceptualProperty": "funnel_stage_cn"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "funnel_stage_cn": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "ab_test_summary.absolute_lift_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ab_test_summary",
+			          "ConceptualProperty": "Absolute Lift Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Absolute Lift": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "ab_test_summary.column95_ci_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ab_test_summary",
+			          "ConceptualProperty": "95% CI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "95% CI": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "ab_test_summary.billing_version_cn": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ab_test_summary",
+			          "ConceptualProperty": "billing_version_cn"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "billing_version_cn": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "ab_test_summary.incremental_revenue_per_billing_session": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ab_test_summary",
+			          "ConceptualProperty": "Incremental Revenue per Billing Session"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Incremental Revenue / Billing Session": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "ab_test_summary.pvalue_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ab_test_summary",
+			          "ConceptualProperty": "P-value Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "p-value": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "ab_test_summary.refund_difference_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ab_test_summary",
+			          "ConceptualProperty": "Refund Difference Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Difference": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "ab_test_summary.relative_lift_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ab_test_summary",
+			          "ConceptualProperty": "Relative Lift Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Relative Lift": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

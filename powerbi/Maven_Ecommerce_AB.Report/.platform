@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Maven_Ecommerce_AB"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b43ac63d-224f-49e6-a402-7d91211e7101"
+  }
+}
