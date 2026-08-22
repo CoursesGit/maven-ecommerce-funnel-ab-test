@@ -1,6 +1,6 @@
 # Large raw datasets
-data/*.csv
-!data/maven_fuzzy_factory_data_dictionary.csv
+data/raw/
+!data/reference/maven_fuzzy_factory_data_dictionary.csv
 
 # Power BI backups, local cache, and binary report
 powerbi/backup*/

@@ -1,0 +1,85 @@
+table experiment_exposure_audit
+	lineageTag: 00000000-0000-0000-0000-954057522561
+
+	column experiment_sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: d0f4bdd7-4854-4b15-a2b8-9f3d22f7958a
+		summarizeBy: none
+		sourceColumn: experiment_sessions
+
+	column experiment_users
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6078d27a-5e1d-4eb6-87f4-84e6fb190d32
+		summarizeBy: none
+		sourceColumn: experiment_users
+
+	column control_sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: f74152b8-2df8-43a1-bf56-6bbd237fbd43
+		summarizeBy: none
+		sourceColumn: control_sessions
+
+	column treatment_sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: a8689edf-9aba-4415-9534-4e2127f0618e
+		summarizeBy: none
+		sourceColumn: treatment_sessions
+
+	column session_cross_exposure_sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: 60bfad54-a1e8-45e6-ae45-1c9b7ddff0ca
+		summarizeBy: none
+		sourceColumn: session_cross_exposure_sessions
+
+	column cross_group_users
+		dataType: int64
+		formatString: #,0
+		lineageTag: 73553c94-5a0b-4c43-8379-1f7c8f4087d9
+		summarizeBy: none
+		sourceColumn: cross_group_users
+
+	column sessions_from_cross_group_users
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5cb8d444-59af-484f-9dce-ab88d22dd918
+		summarizeBy: none
+		sourceColumn: sessions_from_cross_group_users
+
+	column multiple_experiment_session_users
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9b8c5f00-dc2d-4d21-957b-75665ecd4526
+		summarizeBy: none
+		sourceColumn: multiple_experiment_session_users
+
+	column first_exposure_at
+		dataType: dateTime
+		formatString: yyyy-MM-dd HH:mm
+		lineageTag: abb9effc-c5bd-49df-9f11-12142c27a885
+		summarizeBy: none
+		sourceColumn: first_exposure_at
+
+	column last_exposure_at
+		dataType: dateTime
+		formatString: yyyy-MM-dd HH:mm
+		lineageTag: fb5c2940-1c2f-4192-a1f9-e654e43d64bf
+		summarizeBy: none
+		sourceColumn: last_exposure_at
+
+	partition experiment_exposure_audit = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\\Users\\Administrator\\Desktop\\maven_ecommerce_ab\\output\\tables\\experiment_exposure_audit.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"experiment_sessions", Int64.Type}, {"experiment_users", Int64.Type}, {"control_sessions", Int64.Type}, {"treatment_sessions", Int64.Type}, {"session_cross_exposure_sessions", Int64.Type}, {"cross_group_users", Int64.Type}, {"sessions_from_cross_group_users", Int64.Type}, {"multiple_experiment_session_users", Int64.Type}, {"first_exposure_at", type datetime}, {"last_exposure_at", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

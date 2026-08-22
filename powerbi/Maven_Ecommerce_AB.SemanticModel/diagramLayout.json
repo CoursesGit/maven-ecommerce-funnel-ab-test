@@ -11,10 +11,36 @@
         {
           "location": {
             "x": 0,
+            "y": 2
+          },
+          "nodeIndex": "experiment_balance_summary",
+          "nodeLineageTag": "00000000-0000-0000-0000-959100206243",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 50
+          },
+          "nodeIndex": "experiment_diagnostic_metrics",
+          "nodeLineageTag": "00000000-0000-0000-0000-383062404348",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
             "y": 0
           },
-          "nodeIndex": "ab_test_summary",
-          "nodeLineageTag": "8fb11229-6d51-4664-9d90-8220dfba9640",
+          "nodeIndex": "experiment_exposure_audit",
+          "nodeLineageTag": "00000000-0000-0000-0000-954057522561",
           "size": {
             "height": 300,
             "width": 234
@@ -23,39 +49,52 @@
         },
         {
           "location": {
-            "x": 284,
-            "y": 38
-          },
-          "nodeIndex": "funnel_metrics",
-          "nodeLineageTag": "5a9c9e28-c9a5-46ef-bd75-7d06ae48b791",
-          "size": {
-            "height": 224,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 568,
-            "y": 38
-          },
-          "nodeIndex": "monthly_metrics",
-          "nodeLineageTag": "135a849f-ca4c-4b8d-a4a4-605239886b89",
-          "size": {
-            "height": 224,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 852,
-            "y": 26
+            "y": 0
           },
-          "nodeIndex": "overall_metrics",
-          "nodeLineageTag": "35558c39-441a-474e-81e0-8aa6507dc226",
+          "nodeIndex": "experiment_guardrail_metrics",
+          "nodeLineageTag": "00000000-0000-0000-0000-542586884744",
           "size": {
-            "height": 248,
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 0
+          },
+          "nodeIndex": "experiment_primary_metric",
+          "nodeLineageTag": "00000000-0000-0000-0000-306832232786",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 0
+          },
+          "nodeIndex": "experiment_srm_check",
+          "nodeLineageTag": "00000000-0000-0000-0000-808101307578",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 2
+          },
+          "nodeIndex": "experiment_user_crossover_check",
+          "nodeLineageTag": "00000000-0000-0000-0000-509761469224",
+          "size": {
+            "height": 296,
             "width": 234
           },
           "zIndex": 0

@@ -1,0 +1,98 @@
+table experiment_guardrail_metrics
+	lineageTag: 00000000-0000-0000-0000-542586884744
+
+	measure 'Conversion Rate' = DIVIDE(SUM(experiment_guardrail_metrics[orders]), SUM(experiment_guardrail_metrics[sessions]))
+		formatString: 0.00%
+		lineageTag: 62d89d34-1d72-43d4-b1f5-e8fc2bf60a83
+
+	measure 'Revenue per Billing Session' = DIVIDE(SUM(experiment_guardrail_metrics[gross_revenue]), SUM(experiment_guardrail_metrics[sessions]))
+		formatString: $0.00
+		lineageTag: d68bfdcc-65d1-4e87-b698-3e9fab7591a0
+
+	measure 'Net Revenue per Billing Session' = DIVIDE(SUM(experiment_guardrail_metrics[net_revenue]), SUM(experiment_guardrail_metrics[sessions]))
+		formatString: $0.00
+		lineageTag: 173cca8d-6639-4f3b-b511-60ce10cacf5c
+
+	measure 'Refund Rate' = DIVIDE(SUM(experiment_guardrail_metrics[refunded_orders]), SUM(experiment_guardrail_metrics[orders]))
+		formatString: 0.00%
+		lineageTag: 8e3bce39-617c-4f6b-8fcc-b090e2556b9a
+
+	column billing_version
+		dataType: string
+		lineageTag: 4d90d072-6c2a-4cca-be58-eae1da657c1f
+		summarizeBy: none
+		sourceColumn: billing_version
+
+	column sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: c1c4ca80-0fe4-4426-a068-a82c9159dc09
+		summarizeBy: none
+		sourceColumn: sessions
+
+	column orders
+		dataType: int64
+		formatString: #,0
+		lineageTag: 71b37f35-226d-4fc1-b2e8-1099d6e33512
+		summarizeBy: none
+		sourceColumn: orders
+
+	column gross_revenue
+		dataType: double
+		formatString: $#,0.00
+		lineageTag: 942433d4-37ec-47df-9802-4304455c350c
+		summarizeBy: none
+		sourceColumn: gross_revenue
+
+	column net_revenue
+		dataType: double
+		formatString: $#,0.00
+		lineageTag: c5dfc528-92cc-477c-a4c1-834de71ad403
+		summarizeBy: none
+		sourceColumn: net_revenue
+
+	column refunded_orders
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1df07b0a-1d53-4b84-9ccb-33f8545803b0
+		summarizeBy: none
+		sourceColumn: refunded_orders
+
+	column revenue_per_billing_session
+		dataType: double
+		formatString: $0.00
+		lineageTag: 617fd14f-5095-4a7f-ba5f-f3a2114da5e4
+		summarizeBy: none
+		sourceColumn: revenue_per_billing_session
+
+	column net_revenue_per_billing_session
+		dataType: double
+		formatString: $0.00
+		lineageTag: dd9173b0-a87d-49d3-9f88-c723eb074623
+		summarizeBy: none
+		sourceColumn: net_revenue_per_billing_session
+
+	column refund_rate
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 21fa048d-9965-4982-9792-f7fa31b37d50
+		summarizeBy: none
+		sourceColumn: refund_rate
+
+	column billing_version_display = SWITCH(experiment_guardrail_metrics[billing_version], "control","对照组", "treatment","实验组", experiment_guardrail_metrics[billing_version])
+		dataType: string
+		lineageTag: 8a3d9461-a401-4da9-b001-000000000001
+		summarizeBy: none
+
+	partition experiment_guardrail_metrics = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\\Users\\Administrator\\Desktop\\maven_ecommerce_ab\\output\\tables\\experiment_guardrail_metrics.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"billing_version", type text}, {"sessions", Int64.Type}, {"orders", Int64.Type}, {"gross_revenue", type number}, {"net_revenue", type number}, {"refunded_orders", Int64.Type}, {"revenue_per_billing_session", type number}, {"net_revenue_per_billing_session", type number}, {"refund_rate", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

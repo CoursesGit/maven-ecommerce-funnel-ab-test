@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
   "pageOrder": [
-    "2a5434c6c72d31aa1f64",
-    "conversion_funnel",
-    "billing_ab_test"
+    "experiment_overview",
+    "business_impact",
+    "experiment_quality"
   ],
-  "activePageName": "2a5434c6c72d31aa1f64"
+  "activePageName": "experiment_quality"
 }

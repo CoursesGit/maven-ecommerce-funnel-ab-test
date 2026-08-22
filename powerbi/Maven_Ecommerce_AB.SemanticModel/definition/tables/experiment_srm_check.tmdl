@@ -1,0 +1,89 @@
+table experiment_srm_check
+	lineageTag: 00000000-0000-0000-0000-808101307578
+
+	measure 'SRM P-value' = MAX(experiment_srm_check[p_value])
+		formatString: 0.000
+		lineageTag: 762579ea-3f69-4a52-af62-5d3beedb7d39
+
+	measure 'SRM Control Share' = MAX(experiment_srm_check[control_actual_share])
+		formatString: 0.00%
+		lineageTag: e722d98e-cbb6-4097-aeab-625262ff7dc0
+
+	measure 'SRM Treatment Share' = MAX(experiment_srm_check[treatment_actual_share])
+		formatString: 0.00%
+		lineageTag: d7307f67-d113-4872-b3af-cf6d3abda0ee
+
+	column control_sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6f3fba65-5de5-459b-bb9f-f937cf690018
+		summarizeBy: none
+		sourceColumn: control_sessions
+
+	column treatment_sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2c80579a-4858-45cd-ba0d-14cf14bb2e5e
+		summarizeBy: none
+		sourceColumn: treatment_sessions
+
+	column control_actual_share
+		dataType: double
+		formatString: 0.00%
+		lineageTag: ee463d35-1568-4840-aa69-deec2add41c2
+		summarizeBy: none
+		sourceColumn: control_actual_share
+
+	column treatment_actual_share
+		dataType: double
+		formatString: 0.00%
+		lineageTag: def98948-53c5-44da-9113-f6470ca3cc75
+		summarizeBy: none
+		sourceColumn: treatment_actual_share
+
+	column control_expected_share
+		dataType: double
+		formatString: 0.00%
+		lineageTag: dcf6de92-4d02-46ef-a273-5b0286ec16ac
+		summarizeBy: none
+		sourceColumn: control_expected_share
+
+	column treatment_expected_share
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 4ae4fbd1-9b89-46a1-96c8-14f70a7896cd
+		summarizeBy: none
+		sourceColumn: treatment_expected_share
+
+	column chi_square_statistic
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 59e93515-bada-42f7-b931-a074fc428a8f
+		summarizeBy: none
+		sourceColumn: chi_square_statistic
+
+	column p_value
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 63650fb1-5c88-4bd3-92dd-6b3a07c2b997
+		summarizeBy: none
+		sourceColumn: p_value
+
+	column srm_passed
+		dataType: string
+		lineageTag: a90848cf-8575-4d77-ad2a-a4e54e375b04
+		summarizeBy: none
+		sourceColumn: srm_passed
+
+	partition experiment_srm_check = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\\Users\\Administrator\\Desktop\\maven_ecommerce_ab\\output\\tables\\experiment_srm_check.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"control_sessions", Int64.Type}, {"treatment_sessions", Int64.Type}, {"control_actual_share", type number}, {"treatment_actual_share", type number}, {"control_expected_share", type number}, {"treatment_expected_share", type number}, {"chi_square_statistic", type number}, {"p_value", type number}, {"srm_passed", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

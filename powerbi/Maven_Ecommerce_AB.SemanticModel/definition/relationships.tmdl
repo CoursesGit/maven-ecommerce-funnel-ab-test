@@ -1,5 +1,0 @@
-relationship f6a1e913-7b3f-488f-ac87-afe446e17bca
-	joinOnDateBehavior: datePartOnly
-	fromColumn: monthly_metrics.month
-	toColumn: LocalDateTable_9330174a-d9ba-4ed8-b01c-026abb2b484f.Date
-

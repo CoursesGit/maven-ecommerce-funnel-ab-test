@@ -6,19 +6,19 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["ab_test_summary","funnel_metrics","monthly_metrics","overall_metrics","quarterly_metrics"]
+annotation PBI_QueryOrder = ["experiment_primary_metric","experiment_guardrail_metrics","experiment_diagnostic_metrics","experiment_srm_check","experiment_balance_summary","experiment_user_crossover_check","experiment_exposure_audit"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table ab_test_summary
-ref table funnel_metrics
-ref table monthly_metrics
-ref table DateTableTemplate_66c143d9-55d7-4aae-9f88-f3b7e1c7c5ec
-ref table LocalDateTable_9330174a-d9ba-4ed8-b01c-026abb2b484f
-ref table overall_metrics
-ref table quarterly_metrics
+ref table experiment_primary_metric
+ref table experiment_guardrail_metrics
+ref table experiment_diagnostic_metrics
+ref table experiment_srm_check
+ref table experiment_balance_summary
+ref table experiment_user_crossover_check
+ref table experiment_exposure_audit
 
 ref cultureInfo en-US
 

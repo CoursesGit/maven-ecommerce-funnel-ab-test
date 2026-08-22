@@ -5,17 +5,17 @@ cultureInfo en-US
 			  "Version": "2.0.0",
 			  "Language": "en-US",
 			  "Entities": {
-			    "monthly_metrics.month": {
+			    "experiment_primary_metric.control_conversion_rate": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "monthly_metrics",
-			          "ConceptualProperty": "month"
+			          "ConceptualEntity": "experiment_primary_metric",
+			          "ConceptualProperty": "Control Conversion Rate"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Month": {
+			          "对照组购买转化率": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -26,17 +26,17 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "funnel_metrics.step_transition_cn": {
+			    "experiment_primary_metric.treatment_conversion_rate": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "funnel_metrics",
-			          "ConceptualProperty": "step_transition_cn"
+			          "ConceptualEntity": "experiment_primary_metric",
+			          "ConceptualProperty": "Treatment Conversion Rate"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "step_transition_cn": {
+			          "实验组购买转化率": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -47,17 +47,26 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "funnel_metrics.funnel_stage_cn": {
+			    "experiment_primary_metric.absolute_lift": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "funnel_metrics",
-			          "ConceptualProperty": "funnel_stage_cn"
+			          "ConceptualEntity": "experiment_primary_metric",
+			          "ConceptualProperty": "Absolute Lift"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "experiment_primary_metric.relative_lift": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_primary_metric",
+			          "ConceptualProperty": "Relative Lift"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "funnel_stage_cn": {
+			          "相对提升": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -68,17 +77,26 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ab_test_summary.absolute_lift_display": {
+			    "experiment_primary_metric.pvalue": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "ab_test_summary",
-			          "ConceptualProperty": "Absolute Lift Display"
+			          "ConceptualEntity": "experiment_primary_metric",
+			          "ConceptualProperty": "P-value"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "experiment_primary_metric.sample_size": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_primary_metric",
+			          "ConceptualProperty": "Sample Size"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Absolute Lift": {
+			          "实验样本量（Session）": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -89,17 +107,26 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ab_test_summary.column95_ci_display": {
+			    "experiment_guardrail_metrics.billing_version": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "ab_test_summary",
-			          "ConceptualProperty": "95% CI Display"
+			          "ConceptualEntity": "experiment_guardrail_metrics",
+			          "ConceptualProperty": "billing_version"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "experiment_guardrail_metrics.conversion_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_guardrail_metrics",
+			          "ConceptualProperty": "Conversion Rate"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "95% CI": {
+			          "购买转化率": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -110,17 +137,17 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ab_test_summary.billing_version_cn": {
+			    "experiment_guardrail_metrics.refund_rate": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "ab_test_summary",
-			          "ConceptualProperty": "billing_version_cn"
+			          "ConceptualEntity": "experiment_guardrail_metrics",
+			          "ConceptualProperty": "Refund Rate"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "billing_version_cn": {
+			          "退款率": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -131,17 +158,17 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ab_test_summary.incremental_revenue_per_billing_session": {
+			    "experiment_guardrail_metrics.revenue_per_billing_session": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "ab_test_summary",
-			          "ConceptualProperty": "Incremental Revenue per Billing Session"
+			          "ConceptualEntity": "experiment_guardrail_metrics",
+			          "ConceptualProperty": "Revenue per Billing Session"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Incremental Revenue / Billing Session": {
+			          "每次结算页访问收入": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -152,17 +179,254 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ab_test_summary.pvalue_display": {
+			    "experiment_guardrail_metrics.net_revenue_per_billing_session": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "ab_test_summary",
+			          "ConceptualEntity": "experiment_guardrail_metrics",
+			          "ConceptualProperty": "Net Revenue per Billing Session"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "每次结算页访问净收入": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_diagnostic_metrics.billing_version": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_diagnostic_metrics",
+			          "ConceptualProperty": "billing_version"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "experiment_diagnostic_metrics.billing_abandonment_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_diagnostic_metrics",
+			          "ConceptualProperty": "Billing Abandonment Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "experiment_srm_check.srm_control_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_srm_check",
+			          "ConceptualProperty": "SRM Control Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "对照组样本占比": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_srm_check.srm_pvalue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_srm_check",
+			          "ConceptualProperty": "SRM P-value"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "SRM p 值": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_srm_check.srm_treatment_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_srm_check",
+			          "ConceptualProperty": "SRM Treatment Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "实验组样本占比": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_user_crossover_check.crossgroup_percentage": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_user_crossover_check",
+			          "ConceptualProperty": "Cross-group Percentage"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "跨组用户占比": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_user_crossover_check.crossgroup_users": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_user_crossover_check",
+			          "ConceptualProperty": "Cross-group Users"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "跨组用户数": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_user_crossover_check.total_users": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_user_crossover_check",
+			          "ConceptualProperty": "Total Users"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "实验用户数": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_balance_summary.category": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_balance_summary",
+			          "ConceptualProperty": "category"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "experiment_balance_summary.control_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_balance_summary",
+			          "ConceptualProperty": "Control Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "对照组占比": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_balance_summary.treatment_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_balance_summary",
+			          "ConceptualProperty": "Treatment Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "实验组占比": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_primary_metric.absolute_lift_pp_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_primary_metric",
+			          "ConceptualProperty": "Absolute Lift pp Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "绝对提升": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_primary_metric.pvalue_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_primary_metric",
 			          "ConceptualProperty": "P-value Display"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "p-value": {
+			          "p 值": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -173,17 +437,17 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ab_test_summary.refund_difference_display": {
+			    "experiment_guardrail_metrics.billing_version_display": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "ab_test_summary",
-			          "ConceptualProperty": "Refund Difference Display"
+			          "ConceptualEntity": "experiment_guardrail_metrics",
+			          "ConceptualProperty": "billing_version_display"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Difference": {
+			          "实验组别": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -194,17 +458,59 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ab_test_summary.relative_lift_display": {
+			    "experiment_balance_summary.device_type_display": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "ab_test_summary",
-			          "ConceptualProperty": "Relative Lift Display"
+			          "ConceptualEntity": "experiment_balance_summary",
+			          "ConceptualProperty": "device_type_display"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Relative Lift": {
+			          "类别": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_balance_summary.session_type_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_balance_summary",
+			          "ConceptualProperty": "session_type_display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "类别": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "experiment_balance_summary.traffic_source_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "experiment_balance_summary",
+			          "ConceptualProperty": "traffic_source_display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "类别": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",

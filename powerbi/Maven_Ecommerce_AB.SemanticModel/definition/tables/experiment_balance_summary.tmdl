@@ -1,0 +1,85 @@
+table experiment_balance_summary
+	lineageTag: 00000000-0000-0000-0000-959100206243
+
+	measure 'Control Share' = MAX(experiment_balance_summary[control_share])
+		formatString: 0.00%
+		lineageTag: 77bd9341-5aca-4c32-bb2f-7da9590bbb14
+
+	measure 'Treatment Share' = MAX(experiment_balance_summary[treatment_share])
+		formatString: 0.00%
+		lineageTag: 581eeea3-17c7-4c37-8a75-4a2dd2fef713
+
+	column covariate
+		dataType: string
+		lineageTag: 14c4dc27-31ea-4615-b395-a841648e2679
+		summarizeBy: none
+		sourceColumn: covariate
+
+	column category
+		dataType: string
+		lineageTag: 62c966a0-6328-44df-951e-9c2407328a77
+		summarizeBy: none
+		sourceColumn: category
+
+	column control_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: f5851397-88cb-4f68-96da-8e4f3b12d0ea
+		summarizeBy: none
+		sourceColumn: control_count
+
+	column treatment_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: baa66c09-4f10-4610-94b4-6f15a324fdcb
+		summarizeBy: none
+		sourceColumn: treatment_count
+
+	column control_share
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 941c9791-39d1-4022-bf0c-6e52fc7bab18
+		summarizeBy: none
+		sourceColumn: control_share
+
+	column treatment_share
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 2d62aa9f-faba-4d05-83e6-18fdef0d6807
+		summarizeBy: none
+		sourceColumn: treatment_share
+
+	column share_difference_treatment_minus_control
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 55d73ffb-5f87-4943-b996-ae85775067f9
+		summarizeBy: none
+		sourceColumn: share_difference_treatment_minus_control
+
+	column device_type_display = SWITCH(experiment_balance_summary[category], "desktop","桌面端", "mobile","移动端", experiment_balance_summary[category])
+		dataType: string
+		lineageTag: 8a3d9461-a401-4da9-b001-000000000002
+		summarizeBy: none
+
+	column session_type_display = SWITCH(experiment_balance_summary[category], "0","首次访问", "1","重复访问", experiment_balance_summary[category])
+		dataType: string
+		lineageTag: 8a3d9461-a401-4da9-b001-000000000003
+		summarizeBy: none
+
+	column traffic_source_display = SWITCH(experiment_balance_summary[category], "(missing)","未标记", "bsearch","B搜索", "gsearch","G搜索", experiment_balance_summary[category])
+		dataType: string
+		lineageTag: 8a3d9461-a401-4da9-b001-000000000004
+		summarizeBy: none
+
+	partition experiment_balance_summary = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\\Users\\Administrator\\Desktop\\maven_ecommerce_ab\\output\\tables\\experiment_balance_summary.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"covariate", type text}, {"category", type text}, {"control_count", Int64.Type}, {"treatment_count", Int64.Type}, {"control_share", type number}, {"treatment_share", type number}, {"share_difference_treatment_minus_control", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

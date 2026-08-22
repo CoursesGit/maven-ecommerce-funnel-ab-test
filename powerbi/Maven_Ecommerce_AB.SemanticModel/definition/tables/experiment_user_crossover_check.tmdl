@@ -1,0 +1,67 @@
+table experiment_user_crossover_check
+	lineageTag: 00000000-0000-0000-0000-509761469224
+
+	measure 'Total Users' = MAX(experiment_user_crossover_check[experiment_users])
+		formatString: #,0
+		lineageTag: 3b4a58d5-e6b8-493f-8e22-8eb2aa5d72c2
+
+	measure 'Cross-group Users' = MAX(experiment_user_crossover_check[cross_group_users])
+		formatString: #,0
+		lineageTag: 25040f34-f6a0-4245-9980-11ce59dfdb25
+
+	measure 'Cross-group Percentage' = MAX(experiment_user_crossover_check[cross_group_user_share])
+		formatString: 0.00%
+		lineageTag: 38cb70df-8b8e-447f-8b0b-8eff18701981
+
+	column experiment_users
+		dataType: int64
+		formatString: #,0
+		lineageTag: d674bb4e-e15a-4de0-b9eb-064238af72c8
+		summarizeBy: none
+		sourceColumn: experiment_users
+
+	column cross_group_users
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3d287d97-5b5a-4677-97f7-e9850e623351
+		summarizeBy: none
+		sourceColumn: cross_group_users
+
+	column cross_group_user_share
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 6434b86a-1499-4a16-a7cf-833f531e509f
+		summarizeBy: none
+		sourceColumn: cross_group_user_share
+
+	column sessions_from_cross_group_users
+		dataType: int64
+		formatString: #,0
+		lineageTag: e4c16b45-dd7b-4c54-a3fd-792118e7f4c1
+		summarizeBy: none
+		sourceColumn: sessions_from_cross_group_users
+
+	column sensitivity_analysis_required
+		dataType: string
+		lineageTag: 2af2c1ba-b96a-419d-8037-f2b218473e87
+		summarizeBy: none
+		sourceColumn: sensitivity_analysis_required
+
+	column recommended_sensitivity_analysis
+		dataType: string
+		lineageTag: 5979e810-a455-4583-b2bf-a448438365fb
+		summarizeBy: none
+		sourceColumn: recommended_sensitivity_analysis
+
+	partition experiment_user_crossover_check = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\\Users\\Administrator\\Desktop\\maven_ecommerce_ab\\output\\tables\\experiment_user_crossover_check.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"experiment_users", Int64.Type}, {"cross_group_users", Int64.Type}, {"cross_group_user_share", type number}, {"sessions_from_cross_group_users", Int64.Type}, {"sensitivity_analysis_required", type text}, {"recommended_sensitivity_analysis", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,3 @@
+metric,control_value,treatment_value,difference,bootstrap_ci_lower,bootstrap_ci_upper,bootstrap_unit,bootstrap_repetitions,random_seed
+Revenue per Billing Session,22.82648401826484,31.339296636085628,8.512812617820789,5.846221700131326,11.134826017096588,user,10000,20260821
+Net Revenue per Billing Session,21.304718417047184,28.358241590214067,7.053523173166884,4.366346034395214,9.69167991991898,user,10000,20260821

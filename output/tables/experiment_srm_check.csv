@@ -1,0 +1,2 @@
+control_sessions,treatment_sessions,control_actual_share,treatment_actual_share,control_expected_share,treatment_expected_share,chi_square_statistic,p_value,srm_passed
+657,654,0.5011441647597255,0.4988558352402746,0.5,0.5,0.006864988558352402,0.9339666556484371,True

@@ -1,0 +1,2 @@
+sample,control_sessions,treatment_sessions,control_purchases,treatment_purchases,control_conversion_rate,treatment_conversion_rate,absolute_lift,relative_lift,z_statistic,p_value,ci_lower,ci_upper
+A_all_sessions,657,654,300,410,0.45662100456621,0.6269113149847095,0.1702903104184995,0.37293577981651393,6.187232437302946,6.122964982969846e-10,0.1171425434436097,0.22343807739338933

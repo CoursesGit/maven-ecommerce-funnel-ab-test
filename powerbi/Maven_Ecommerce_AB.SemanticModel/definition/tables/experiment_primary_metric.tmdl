@@ -1,0 +1,136 @@
+table experiment_primary_metric
+	lineageTag: 00000000-0000-0000-0000-306832232786
+
+	measure 'Control Conversion Rate' = MAX(experiment_primary_metric[control_conversion_rate])
+		formatString: 0.00%
+		lineageTag: fdb2cd1f-322e-4af8-a66f-af7b8363fe2c
+
+	measure 'Treatment Conversion Rate' = MAX(experiment_primary_metric[treatment_conversion_rate])
+		formatString: 0.00%
+		lineageTag: 2f5f6ac3-ecde-4f34-a094-b905f8ad648e
+
+	measure 'Absolute Lift' = MAX(experiment_primary_metric[absolute_lift])
+		formatString: +0.00%;-0.00%
+		lineageTag: 8be5bdd2-4c37-4bc6-933c-855ab55e9975
+
+	measure 'Relative Lift' = MAX(experiment_primary_metric[relative_lift])
+		formatString: +0.00%;-0.00%
+		lineageTag: f232b760-d14b-4795-9a1e-73ea4d5f508e
+
+	measure P-value = MAX(experiment_primary_metric[p_value])
+		formatString: 0.00E+00
+		lineageTag: a11e4438-ed63-43e5-a5bc-ab95ab0bfc68
+
+	measure 'Sample Size' = MAX(experiment_primary_metric[control_sessions]) + MAX(experiment_primary_metric[treatment_sessions])
+		formatString: #,0
+		lineageTag: c28fd9e3-2c31-448e-a99a-b09976f5c118
+
+	measure 'Absolute Lift pp Display' = [Absolute Lift] * 100
+		formatString: +0.00"pp";-0.00"pp";0.00"pp"
+		lineageTag: 4e59514d-5050-4449-5350-4c4159303031
+
+	measure 'P-value Display' = IF([P-value] < 0.001, "p < 0.001", FORMAT([P-value], "0.000"))
+		lineageTag: 8a3d9461-a401-4da9-b001-000000000005
+
+	column sample
+		dataType: string
+		lineageTag: e08655b3-308a-46ec-a76e-271dcc5a92de
+		summarizeBy: none
+		sourceColumn: sample
+
+	column control_sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: b53c0888-9708-4a55-91f0-d9c1761652d7
+		summarizeBy: none
+		sourceColumn: control_sessions
+
+	column treatment_sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7ccc0680-8431-4797-8ffe-342b125d23ab
+		summarizeBy: none
+		sourceColumn: treatment_sessions
+
+	column control_purchases
+		dataType: int64
+		formatString: #,0
+		lineageTag: d291d3fa-79a1-4277-814d-26541af61df7
+		summarizeBy: none
+		sourceColumn: control_purchases
+
+	column treatment_purchases
+		dataType: int64
+		formatString: #,0
+		lineageTag: 15a727ac-5dff-49dd-9616-47deddac0b2d
+		summarizeBy: none
+		sourceColumn: treatment_purchases
+
+	column control_conversion_rate
+		dataType: double
+		formatString: 0.00%
+		lineageTag: b59d36c0-2c6f-4846-9872-8e27d5162cb3
+		summarizeBy: none
+		sourceColumn: control_conversion_rate
+
+	column treatment_conversion_rate
+		dataType: double
+		formatString: 0.00%
+		lineageTag: bc670659-e74e-45f3-8944-22276de3626e
+		summarizeBy: none
+		sourceColumn: treatment_conversion_rate
+
+	column absolute_lift
+		dataType: double
+		formatString: 0.00%
+		lineageTag: e7a7adef-4f94-4826-8d5b-b49d6d1942fc
+		summarizeBy: none
+		sourceColumn: absolute_lift
+
+	column relative_lift
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 83f55380-54a0-4605-85dc-6933b45b0062
+		summarizeBy: none
+		sourceColumn: relative_lift
+
+	column z_statistic
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3fa48a30-3b61-475a-bdd5-fe0cbcc1227c
+		summarizeBy: none
+		sourceColumn: z_statistic
+
+	column p_value
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 588876e5-5a95-4a47-8722-3f5fb9ec8235
+		summarizeBy: none
+		sourceColumn: p_value
+
+	column ci_lower
+		dataType: double
+		formatString: 0.00%
+		lineageTag: d2d5fa12-979c-42ea-a2eb-f1224f2df637
+		summarizeBy: none
+		sourceColumn: ci_lower
+
+	column ci_upper
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 84457be8-c9f3-467c-9693-c265056134d4
+		summarizeBy: none
+		sourceColumn: ci_upper
+
+	partition experiment_primary_metric = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\\Users\\Administrator\\Desktop\\maven_ecommerce_ab\\output\\tables\\experiment_primary_metric.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"sample", type text}, {"control_sessions", Int64.Type}, {"treatment_sessions", Int64.Type}, {"control_purchases", Int64.Type}, {"treatment_purchases", Int64.Type}, {"control_conversion_rate", type number}, {"treatment_conversion_rate", type number}, {"absolute_lift", type number}, {"relative_lift", type number}, {"z_statistic", type number}, {"p_value", type number}, {"ci_lower", type number}, {"ci_upper", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

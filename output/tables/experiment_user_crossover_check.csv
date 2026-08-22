@@ -1,0 +1,2 @@
+experiment_users,cross_group_users,cross_group_user_share,sessions_from_cross_group_users,sensitivity_analysis_required,recommended_sensitivity_analysis
+1301,6,0.004611837048424289,12,True,exclude cross-group users and retain first experiment session per user
